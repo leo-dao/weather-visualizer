@@ -7,12 +7,14 @@ import { ToneMapping } from "three";
 const Rain = () => {
     // This will be props for rain information by api
     // rainCount --> how much rain is falling
-    // rainSpeed --> how fast the rain is falling
+    // rainSpeed [1, 2] --> how fast the rain is falling
 
     // Pass in width, depth, and height of cloud
 
-    const rainCount = 50;
-    const rainSpeed = 0.5;
+    const { nodes, materials } = useGLTF('/assets/rain_droplet.glb');
+
+    const rainCount = 200;
+    const rainSpeed = 1;
 
     const ref = useRef(!null);
 
@@ -36,7 +38,7 @@ const Rain = () => {
             // generating random velocity for rain
             temp.velocity = new THREE.Vector3(
                 0,
-                (Math.random() * (1 + rainSpeed - 1) + 1) / 10,
+                (Math.random() * (rainSpeed * 2 - rainSpeed) + rainSpeed) / 15,
                 0
             );
             velocities.push(temp.velocity.x, temp.velocity.y, temp.velocity.z);
@@ -76,9 +78,16 @@ const Rain = () => {
 
 
     return (
-        <instancedMesh ref={ref} args={[null, null, rainCount]}>
-            <sphereBufferGeometry attach='geometry' />
-            <meshStandardMaterial attach='material' color='blue' />
+        <instancedMesh
+            ref={ref}
+            args={[nodes.Icosphere.geometry, nodes.Icosphere.material, rainCount]}
+        >
+            <meshStandardMaterial
+                color='lightblue'
+                transparent={true}
+                opacity={0.7}
+                metalness={0.8}
+            />
         </instancedMesh>
     )
 }
