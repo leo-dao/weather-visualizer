@@ -4,11 +4,11 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import Droplets from "../utils/droplets";
 
-const Rain = () => {
+const Snow = () => {
 
     return (
-        <Droplets count={530} speed={1} asset={"/assets/rain_droplet.glb"} />
+        <Droplets count={200} speed={0.8} asset={"/assets/rain_droplet.glb"} />
     );
 };
 
-export default Rain;
+export default Snow;
