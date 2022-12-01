@@ -1,12 +1,44 @@
 .App {
   height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(9deg, #570fa4 0%, #2575fc 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
-#canvas {
-  background: linear-gradient(90deg, #570fa4 0%, #2575fc 100%);
-  height: 100vh;
+#canvas {}
+
+#search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  width: 80%;
+  background: rgba(255, 255, 255, 0);
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  color: black;
+  font-size: 1.2em;
+}
+
+button:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+/* Autocomplete package class name */
+.sc-eDvSVe {
+  width: 100%
 }
